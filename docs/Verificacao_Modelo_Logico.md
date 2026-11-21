@@ -182,7 +182,7 @@ Cada item abaixo foi aprovado pela equipe antes de ser aplicado no `.docx` e no 
 | R‑1, R‑4, R‑5 | Incluir no .docx | Nova seção "Restrições de integridade": nulabilidade e origem das FKs 1:N, participações mínimas | — |
 | R‑3 | Guardar histórico (data na PK) | PK de `EMPRESA_PROJETO_ACADEMICO` = (CNPJ, Cod_projeto, **Data_inicio**); PK de `EMPRESA_OPORTUNIDADE` = (CNPJ, Cod_oportunidade, **Data_interesse**) | `Data_inicio` (IMPLEMENTA) e `Data_interesse` (INTERESSE) marcados como identificadores (círculo preenchido) |
 | R‑6 | O coordenador **não pode** ser orientador do mesmo projeto | Restrição na seção "Restrições de integridade" | — |
-| R‑2 | Não aplicado (a disciplina exige só PK/FK) | — | — |
+| R‑2 | Aplicado no DDL (`sql/ddl.sql`): UNIQUE em `DOCENTE.Email` e `EMPRESA.Email`; CHECK `Data_fim IS NULL OR Data_fim >= Data_inicio`; domínios por CHECK: `Situacao` de projeto e de implementação ∈ {PLANEJADO, EM_ANDAMENTO, CONCLUIDO, CANCELADO}, `Situacao` de desafio/oportunidade ∈ {ABERTO, EM_ANALISE, ATENDIDO, ARQUIVADO}, `Prioridade` ∈ {BAIXA, MEDIA, ALTA}, `Grau_aderencia` e `Nivel_interesse` ∈ {BAIXO, MEDIO, ALTO} | — (não alterado) | — |
 
 ### Pergunta P7 sem ligação projeto ↔ demanda (decisão D‑5)
 O modelo não diz quais projetos são "semelhantes" a uma demanda. A resposta sai por aproximação:
